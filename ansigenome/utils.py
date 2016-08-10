@@ -82,11 +82,14 @@ def file_to_list(path):
     return lines
 
 
-def dict_to_json(input):
+def dict_to_json(input, pretty_print=False):
     """
     Return json from a dict.
     """
-    return json.dumps(input)
+    if pretty_print:
+        return json.dumps(input, indent=2)
+    else:
+        return json.dumps(input)
 
 
 def url_to_string(url):
