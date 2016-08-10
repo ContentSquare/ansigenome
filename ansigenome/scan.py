@@ -200,6 +200,7 @@ class Scan(object):
         Return the meta file.
         """
         if not os.path.exists(self.paths["meta"]):
+            self.dependencies = []
             return ""
 
         meta_dict = utils.yaml_load(self.paths["meta"])
