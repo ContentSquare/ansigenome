@@ -131,6 +131,9 @@ def build_option_parser(action):
     if action in ("scan", "gendoc", "genmeta", "export", "run"):
         parser.add_option("-l", "--limit", dest="limit",
                           help="comma separated string of roles to white list")
+        parser.add_option("--md", action="store_const", const=1,
+                          dest="docformat", default=0,
+                          help="Use the Markdown format for docs instead of RST")
     if action in ("config", "export"):
         parser.add_option("-o", "--out", dest="out_file",
                           help="output file path")
