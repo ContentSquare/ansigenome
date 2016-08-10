@@ -91,6 +91,9 @@ def build_option_parser(action):
             export_type = "dump"
             formats = "json"
             usage = ""
+            parser.add_option("--role", action="store", dest="role",
+                              default=None,
+                              help="Get roles depending on this input role")
 
         parser.set_usage("{0} ROLES_PATH [-t TYPE] "
                          "[-f FORMAT] {1} [-o OUT_FILE]".format(usage_prefix,

@@ -252,7 +252,15 @@ digraph role_dependencies {
         """
         Dump the output to json.
         """
-        report_as_json_string = utils.dict_to_json(self.report)
+        if self.options.role is not None:
+            role = "roles/" + self.options.role
+            if role not in self.report["roles"]:
+                print("Role does not exist: %s" % self.options.role)
+                sys.exit(2)
+            data = self.report["roles"][role]
+        else:
+            data = self.report
+        report_as_json_string = utils.dict_to_json(data, pretty_print=True)
         if self.out_file:
             utils.string_to_file(self.out_file, report_as_json_string)
         else:
